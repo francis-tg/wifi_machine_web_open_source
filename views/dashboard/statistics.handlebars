@@ -1,0 +1,172 @@
+<div class="">
+  <!-- [ breadcrumb ] start -->
+  <div class="page-header">
+    <div class="page-block">
+      <div class="row align-items-center">
+        <div class="col-md-12">
+          <div class="page-header-title">
+            <h5 class="m-b-10">Les Statistiques</h5>
+          </div>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/"><i
+                  class="feather icon-home"
+                ></i></a></li>
+            <li class="breadcrumb-item"><a href="javascript:"><i
+                  class="fas fa-chart-bar"
+                ></i>
+                Statistiques</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- [ breadcrumb ] end -->
+  <div class="card card border-primary mb-3">
+    <div class="card-header text-center">Logs
+      <div class="float-right">
+        {{!-- <form action="/statistics/search" method="post">
+          <div class="input-group mb-3">
+            {{! <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="fas fa-filter    "></i></span>
+              </div> }}
+            <input
+              type="date"
+              class="form-control"
+              name="startDate"
+              aria-label="filter"
+              aria-describedby="basic-addon1"
+            />
+            <input
+              type="date"
+              class="form-control"
+              name="endDate"
+              aria-label="filter"
+              aria-describedby="basic-addon1"
+            />
+            <div class="input-group-append">
+              {{! <span class="input-group-text" id="basic-addon1"> }}
+              <button type="submit" class="border-0 btn btn-primary"><i
+                  class="fas fa-search"
+                ></i></button>
+              {{! </span> }}
+            </div>
+          </div>
+        </form> --}}
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-12 table-responsive">
+           <div class="float-left">
+             <form action="/statistics/" method="get">
+          {{!-- <div class="input-group mb-3">
+            {{! <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="fas fa-filter    "></i></span>
+              </div> }}
+            <input
+              type="date"
+              class="form-control"
+              name="startDate"
+              aria-label="filter"
+              aria-describedby="basic-addon1"
+            />
+            <input
+              type="date"
+              class="form-control"
+              name="endDate"
+              aria-label="filter"
+              aria-describedby="basic-addon1"
+            />
+            <input type="hidden" name="type" value="achat">
+            <div class="input-group-append">
+              {{! <span class="input-group-text" id="basic-addon1"> }}
+              <button type="submit" class="border-0 btn-sm btn-primary"><i
+                  class="fas fa-search"
+                ></i></button>
+              {{! </span> }}
+            </div>
+          </div> --}}
+        </form>
+           </div>
+          <table class="table table-bordered table-inverse " id="devicetable">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Date d'enregistrement</th>
+              </tr>
+              </thead>
+              <tbody>
+                {{#each ticketLogs}}
+                  <tr>
+                    <td scope="row">{{id}}</td>
+                    <td>{{description}}</td>
+                    <td>{{price}}</td>
+                    <td>{{createdAt}}</td>
+                  </tr>
+                {{/each}}
+                
+               
+              </tbody>
+          </table>
+        </div>
+        {{!-- <div class="col-md-6">
+          <div class="float-left">
+             <form action="/statistics/?type=logs" method="get">
+          <div class="input-group mb-3">
+            {{! <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="fas fa-filter    "></i></span>
+              </div> }}
+            <input
+              type="date"
+              class="form-control"
+              name="startDate"
+              aria-label="filter"
+              aria-describedby="basic-addon1"
+            />
+            <input
+              type="date"
+              class="form-control"
+              name="endDate"
+              aria-label="filter"
+              aria-describedby="basic-addon1"
+            />
+            <input type="hidden" name="type"  value="achat">
+            <div class="input-group-append">
+              {{! <span class="input-group-text" id="basic-addon1"> }}
+              <button type="submit" class="border-0 btn-sm btn-primary"><i
+                  class="fas fa-search"
+                ></i></button>
+              {{! </span> }}
+            </div>
+          </div>
+        </form>
+           </div>
+          <table class="table table-bordered table-inverse table-responsive">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Description</th>
+                <th>Date d'enregistrement</th>
+              </tr>
+              </thead>
+              <tbody>
+                {{#each machinesLogs}}
+                   <tr>
+                  <td scope="row">{{id}}</td>
+                  <td>{{inforamtion}}</td>
+                  <td>{{createdAt}}</td>
+                </tr>
+                {{/each}}
+                
+               
+              </tbody>
+          </table>
+        </div> --}}
+      </div>
+
+    </div>
+  </div>
+</div>

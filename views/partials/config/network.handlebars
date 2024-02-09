@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col-md-6">
+        {{interface}}
+        <form action="" method="post" data-set="network">
+            <div class="mb-3">
+                <label for="ip_address" class="form-label">Adresse Ip</label>
+                <input type="text" pattern="^([0-9]{1,3}\.){3}[0-9]{1,3}$" class="form-control" ip_address name="ip_address" id="ip_address" aria-describedby="helpId" value="{{interface.ip}}" placeholder="">
+                <small id="helpId" class="form-text text-muted"></small>
+            </div>
+            <div class="mb-3">
+                <label for="netmask" class="form-label">Masque sous-réseau</label>
+                <input type="text" class="form-control" netmask value="{{interface.netmask}}" pattern="^(128|192|224|240|248|252|254)\.0\.0\.0$|^255\.(0|128|192|224|240|248|252|254)\.0\.0$|^255\.255\.(0|128|192|224|240|248|252|254)\.0$|^255\.255\.255\.(0|128|192|224|240|248|252|254|255)$" name="netmask" id="netmask" aria-describedby="helpId" placeholder="">
+                <small id="helpId" class="form-text text-muted"></small>
+            </div>
+            <div class="mb-3">
+                <label for="gateway" class="form-label">Passerelle par défaut</label>
+                <input type="text" pattern="^([0-9]{1,3}\.){3}[0-9]{1,3}$"   class="form-control" value="{{interface.gateway}}" name="gateway" gateway id="gateway" aria-describedby="helpId" placeholder="" required>
+                <small id="helpId" class="form-text text-muted"></small>
+            </div>
+            {{!-- <button class="btn btn-primary" type="submit">Enregistrer</button> --}}
+        </form>
+    </div>
+    <div class="col-md-6">
+        <h5>Mode simple</h5>
+        <ul style="font-size: medium;">
+            <li>Laisser les imformations tels quelles sont et cliquer sur suivant</li>
+        </ul>
+        <h5>Mode Expert</h5>
+        <ul style="font-size: medium;">
+            <li>Entrer l'addresse ip</li>
+            <li>Entrer le masque sous réseau</li>
+            <li>Entrer le passerelle par défaut</li>
+            <hr>
+            <h5 class="list-style-none text-center"><strong>OU</strong></h5>
+            <li>Entrer l'adresse ip en précisant le <strong>CIDR</strong> Exp: <code>192.168.18.25/24</code> 
+            <br>
+            vous aurez automatiquement le masque sous-réseau et le passerelle par défaut
+            </li>
+        </ul>
+    </div>
+</div>

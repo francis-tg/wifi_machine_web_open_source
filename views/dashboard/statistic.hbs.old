@@ -1,0 +1,79 @@
+<div class="">
+<!-- [ breadcrumb ] start -->
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">Les Statistiques</h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="javascript:"><i class="fas fa-chart-bar    "></i> Statistiques</a> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- [ breadcrumb ] end -->
+    <div class="card card border-primary mb-3">
+      <div class="card-header text-center">Logs
+        <div class="float-right">
+          <form action="/statistics/search" method="post">
+            <div class="input-group mb-3">
+              {{!-- <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="fas fa-filter    "></i></span>
+              </div> --}}
+              <input type="date" class="form-control" name="startDate"  aria-label="filter" aria-describedby="basic-addon1">
+              <input type="date" class="form-control" name="endDate" aria-label="filter" aria-describedby="basic-addon1">
+              <div class="input-group-append">
+                {{!-- <span class="input-group-text" id="basic-addon1"> --}}
+                  <button type="submit" class="border-0 btn btn-primary" ><i class="fas fa-search"></i></button>
+                {{!-- </span> --}}
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6 ">
+            <ul class="list-group">
+              <li
+                class="list-group-item list-group-item-action active text-center"
+              >Achats : {{#if totalLog}}
+                          {{totalLog}}
+                        {{else}}
+                        0
+                        {{/if}} FCFA </li>
+              <div class="list1">
+              {{#each ticketLogs}}
+                
+                  <li class="list-group-item">{{description}}
+                  <h2 class="badge badge-success">{{price}}F</h2>
+                </li>
+                
+              {{/each}}
+             </div>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <ul class="list-group">
+              <li
+                class="list-group-item list-group-item-action active text-center"
+              >Argent entré : {{#if totalMachine}}
+                          {{totalMachine}}
+                        {{else}}
+                        0
+                        {{/if}} FCFA</li>
+              {{#each machinesLogs}}
+                <li class="list-group-item">{{information}}</li>
+              {{/each}}
+
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>

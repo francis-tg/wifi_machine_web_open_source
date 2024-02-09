@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-md-6">
+        <form action="" method="post" data-set="ticket">
+            <div class="mb-3">
+                <label for="ticket_header" class="form-label">Entête</label>
+                <input type="text" class="form-control" name="ticket_header" id="ticket_header" aria-describedby="helpId" placeholder="">
+                <small id="helpId" class="form-text text-muted"></small>
+            </div>
+            <div class="mb-3">
+                <label for="ticket_footer" class="form-label">Pied de page</label>
+                <input type="text" class="form-control" name="ticket_footer" id="ticket_footer" aria-describedby="helpId" placeholder="">
+                <small id="helpId" class="form-text text-muted"></small>
+            </div>
+           {{!--  <div class="mb-3">
+                <label for="code_length" class="form-label">Taille du code</label>
+                <input type="text" class="form-control" name="code_length" id="code_length" aria-describedby="helpId" placeholder="">
+                <small id="helpId" class="form-text text-muted"></small>
+            </div> --}}
+            {{!-- <button class="btn btn-primary" type="submit">Enregistrer</button> --}}
+        </form>
+    </div>
+    <div class="col-md-6">
+        <ul style="font-size: medium;">
+            <li>Entrer les informations de l'entête du ticket <span class="text-danger">!Important</span></li>
+            <li>Entrer les informations du pied de page <span class="text-danger">!Important</span></li>
+          {{!--   <li>Entre votre mode de passe </li> --}}
+        </ul>
+    </div>
+</div>

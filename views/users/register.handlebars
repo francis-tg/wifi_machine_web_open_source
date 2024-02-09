@@ -1,0 +1,136 @@
+<!--<div class="row">
+  <div class="col-md-6 mx-auto">
+    <div class="card card-body">
+      <img class="logo" src="/img/logo.png" />
+      <h3 class="text-center">Account Register</h3>
+      <form action="/users/register" method="POST">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            name="username"
+            value="{{username}}"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="name"
+            name="name"
+            class="form-control"
+            value="{{name}}"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="phonenumber">Numero</label>
+          <input
+            type="name"
+            name="phonenumber"
+            class="form-control"
+            value="{{phonenumber}}"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            class="form-control"
+            value="{{password}}"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="password2">Confirm Password</label>
+          <input
+            type="password"
+            name="password2"
+            class="form-control"
+            value="{{password2}}"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>--->
+
+ <div class="auth-wrapper">
+        <div class="auth-content">
+            <div class="auth-bg">
+                <span class="r"></span>
+                <span class="r s"></span>
+                <span class="r s"></span>
+                <span class="r"></span>
+            </div>
+            <div class="card">
+                <div class="card-body text-center">
+                    <div class="mb-4">
+                        <i class="feather icon-user-plus auth-icon"></i>
+                    </div>
+                    <h3 class="mb-4">Créer un compte</h3>
+                    <form action="/users/register" method="post">
+                      <div class="input-group mb-3">
+                        <input type="text"
+                        name="username"
+                         class="form-control"
+                        placeholder="Nom d'utilisateur">
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" 
+                        class="form-control"
+                        name="name" 
+                        placeholder="nom">
+                    </div>
+                     <div class="input-group mb-4">
+                        <input type="tel" 
+                        class="form-control"
+                        name="phonenumber"
+                        placeholder="numero de téléphone">
+                    </div>
+                    <div class="input-group mb-4">
+                        <input type="password" 
+                        class="form-control" 
+                        name="password"
+                        placeholder="Mot de passe">
+                    </div>
+                     <div class="input-group mb-4">
+                        <input type="password" 
+                        class="form-control" 
+                        name="password2"
+                        placeholder="confirmer le mot de passe">
+                    </div>
+                    {{!-- <div class="form-group text-left">
+                        <div class="checkbox checkbox-fill d-inline">
+                            <input type="checkbox" name="checkbox-fill-1" id="checkbox-fill-1" checked="">
+                            <label for="checkbox-fill-1" class="cr"> Save Details</label>
+                        </div>
+                    </div> --}}
+                    {{!-- <div class="form-group text-left">
+                        <div class="checkbox checkbox-fill d-inline">
+                            <input type="checkbox" name="checkbox-fill-2" id="checkbox-fill-2">
+                            <label for="checkbox-fill-2" class="cr">Send me the <a href="#!"> Newsletter</a> weekly.</label>
+                        </div>
+                    </div> --}}
+                    <button class="btn btn-primary shadow-2 mb-4">Créer un compte</button>
+                    </form>
+                    <p class="mb-0 text-muted">Avez-vous un compte? <a href="/users/login"> Connectez-vous</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{!-- <style>
+  .auth-wrapper{
+    margin-top: -10rem;
+  }
+  nav, .navbar{
+    display: none;
+    visibility: hidden;
+  }
+</style> --}}

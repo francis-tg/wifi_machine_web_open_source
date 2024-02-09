@@ -1,0 +1,325 @@
+<!-- [ breadcrumb ] start -->
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">Liste de tous les tickets </h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="javascript:"><i class="fas fa-ticket-alt    "></i>Tickets</a>
+                        <div class="badge badge-success">{{ticketsNumber}}</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- [ breadcrumb ] end -->
+<div class="card">
+    <div class="card-header">
+        <h3>
+            Tickets
+        </h3>
+
+        <div class="float-right">
+    <button class="btn btn-primary" data-target="#generateTickets" data-toggle="modal"><i class="fas fa-plus"></i> Créer un ticket</button>
+    <button class="btn btn-danger" id="deleteitem">
+        <i class="fas fa-trash-alt    "></i>
+        Supprimer
+    </button>
+   {{!--  <button class="btn btn-secondary">
+        <i class="fas fa-users"></i>
+        Créer un compte
+    </button> --}}
+</div>
+    </div>
+
+
+    {{!-- <div class="form-inline">
+        <form action="/tickets/deleteExpiredTickets" method="POST">
+        <input type="submit" value="Supprimer tous les tickets expirées" id="" class="btn btn-danger">
+    </form>
+    <form action="/tickets/deleteTickets" method="POST">
+        <input type="submit" value="Supprimer tous les tickets" id="" class="btn btn-danger">
+    </form>
+     <form action="/tickets/setDisabled" method="POST">
+        <input type="submit" value="set Disabled" id="" class="btn btn-danger">
+    </form>
+     <form action="/tickets/setexpirationdate" method="POST">
+        <input type="submit" value="setexpiration date" id="" class="btn btn-danger">
+    </form>
+     <form action="/tickets/getdisabled" method="POST">
+        <input type="submit" value="get disabled" id="" class="btn btn-danger">
+    </form>
+     <form action="/tickets/testerr" method="POST">
+        <input type="submit" value="tester" id="" class="btn btn-danger">
+    </form>
+    </div> --}}
+
+
+
+    
+    <div class="card-body">
+        <table class="table table-bordered table-inverse table-stripped" id="ticketsTable">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input class="form-check-input" id="checkall" type="checkbox">
+                          </label>
+                        </div>
+                    </th>
+                    <th scope="col">Nom d'utilisateur</th>
+                    {{!-- <th scope="col">Mot de Passe</th> --}}
+                    <th scope="col">Prix</th>
+                    <th scope="col">Statut</th> 
+                    <th scope="col">Forfait du ticket</th>
+                    <th scope="col">Date création</th>
+                    <th scope="col">Date Expiration</th>
+                    <th scope="col">Jour validite</th>
+                    <th>
+
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each ticket}}
+                <tr class="animate__animated">
+                    <td>
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input class="form-check-input checkitem" id="checkitem" type="checkbox" value="{{id}}">
+                          </label>
+                        </div>
+                    </td>
+                    <td scope="row">{{username}}</td>
+                    {{!-- <td>{{password}}</td> --}}
+                    <td>{{price}}</td>
+                    <td>{{disabled}}</td>
+                    <td>{{forfait}}</td>
+                    <td>{{dateAchat}}</td>
+                    <td>{{expiration}}</td>
+                    <td>{{jourValidite}}</td>
+                    <td>
+                        <a type="button" class="btn btn-danger" href="/tickets/delete/{{id}}">
+                            <i class="fas fa-trash-alt    "></i>
+                        </a>
+                       <!-- <button class="btn btn-warning" data-target="#editTicket{{id}}" data-toggle="modal">
+                            <i class="fas fa-edit    "></i>
+                        </button>-->
+                    </td>
+                </tr>
+
+                <div class="modal fade" id="editTicket{{id}}" tabindex="-1" role="dialog" aria-labelledby="editTicket{{id}}-label" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editTicket{{id}}Title">Editer le ticket</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <!--Modal content-->
+                                <form action="/api/tickets/edit/{{username}}" method="post">
+                                    <div class="form-group">
+                                      <label for="uptime">Selectionner le temps</label>
+                                      <select class="form-control" name="uptime" id="uptime">
+                                        <option value="">Selectionner le temps</option>
+                                        <option value="1h">1 heure</option>
+                                        <option value="3h">3 heures</option>
+                                        <option value="5h">5 heures</option>
+                                        <option value="10h">10 heures</option>
+                                        <option value="1w">1 semaine</option>
+                                        <option value="2w">2 semaines</option>
+                                        <option value="4w">1 mois</option>
+                                      </select>
+                                    </div>
+                                
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                <button type="submit" class="btn btn-primary">Sauvegarder</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {{/each}}
+            </tbody>
+            
+        </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="generateTickets" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="generateTickets-label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="generateTicketsTitle">
+                    Créer un ticket
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--Modal content-->
+                <form action="" method="post" id="buyTicket">
+                    <div class="form-group">
+                        <label for="uptime">Selectionner le temps</label>
+                        <select class="custom-select" name="price" id="uptime" required>
+                            <option value="" selected>Selectionner</option>
+                            {{#each times}}
+                                <option value="{{price}}" id="cisco-format-label"> {{time}}</option>
+                            {{/each}}
+                            
+                        </select>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                <button type="submit" class="btn btn-primary">Générer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function sweetalert(title, msg, type) {
+    swal(title, msg, {
+        icon: type, //"error",
+        buttons: {
+            confirm: {
+                className: 'btn btn-danger'
+            }
+        },
+    });
+
+}
+
+function sweetalertConfim(title, msg, type, reload = true) {
+    swal(title, msg, {
+        icon: type, //"error",
+        buttons: {
+            confirm: {
+                className: 'btn btn-danger'
+            }
+        },
+    }).then((Delete) => {
+        if (Delete) {
+            if (reload == true) {
+                window.location.reload()
+            } else {
+                // swal({
+                //     title: 'Conf',
+                //     text: 'Your file has been deleted.',
+                //     type: 'success',
+                //     buttons: {
+                //         confirm: {
+                //             className: 'btn btn-success'
+                //         }
+                //     }
+                // });
+                swal.close()
+            }
+        } else {
+            swal.close();
+        }
+    })
+
+}
+    $("#checkall").change(function(e) {
+        e.preventDefault();
+        //if ($("#eleveSelectAll").prop('checked') == false) {
+        $('.checkitem').prop('checked', $(this).prop("checked"))
+            //}
+    });
+    $(".checkitem:checkbox").change(()=>{
+        if ($('.checkitem:checked').length === $('.checkitem').length) {
+            $("#checkall").prop("checked", true)
+        }else{
+            $("#checkall").prop("checked", false)
+        }
+    })
+
+    $("#deleteitem").click((e)=>{
+        let id=[];
+        e.preventDefault();
+        $(".checkitem:checked").each(function(i){
+            id[i]=$(this).val();
+        })
+        $(".checkitem:checked").each(function(i){
+            $(this).parents()[3].classList.add('animate__fadeOutLeft')
+            $("#checkall").prop("checked", false)
+            setTimeout(()=>{$(this).parents()[3].classList.add('hidden')},1500)
+            $.ajax({
+                type: "DELETE",
+                url: "/tickets/delete",
+                data: {id:id},
+                success: function(response) {
+                    setTimeout(()=>{
+                        window.location.reload()
+
+                    },2000)
+                }
+            })
+        })
+    })
+
+    const btnRemoves = document.querySelectorAll('#remove');
+    for(key in btnRemoves)
+    {
+        if(Object.prototype.hasOwnProperty.call(btnRemoves, key)){
+            const btnR = btnRemoves[key]
+            btnR.addEventListener('click',()=>{
+               // btnR.parentElement.parentElement.classList.add('')
+               
+                //btnR.parentElement.parentElement.setAttribute('hidden',true)
+                const perm = confirm("Voulez-vous vraiment le supprimer?");
+               if(perm){
+                    $.ajax({
+                    type: 'DELETE',
+                    url: btnR.dataset.url,
+                    success: function(data) {
+                    console.log(data);
+                    if(data==='success'){
+                            btnR.parentElement.parentElement.classList.add('animate__fadeOutLeft')
+                            setTimeout(()=>{btnR.parentElement.parentElement.classList.add('hidden')},1500)
+                    }
+                    }
+                    });
+               }else console.log('annulé')
+            })
+        }
+    }
+    window.onload = ()=>{
+        const screenWidth = screen.width;
+        if(screenWidth<780){
+            document.querySelector('#ticketsTable').classList.add('table-responsive')
+        }
+    }
+    window.onchange = ()=>{
+         const screenWidth = screen.width;
+        if(screenWidth<780){
+            document.querySelector('#ticketsTable').classList.add('table-responsive')
+        }
+    }
+    window.addEventListener('resize',(e)=>{
+        const screenWidth = screen.width;
+        if(screenWidth<780){
+            document.querySelector('#ticketsTable').classList.add('table-responsive')
+        }
+    })
+</script>
+<style>
+    .hidden{
+        display: none;
+    }
+</style>

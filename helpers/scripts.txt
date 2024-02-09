@@ -1,0 +1,76 @@
+:local user $user;
+:local ip $address;
+:local mac $"mac-address";
+:local date [/system clock get date];
+:local useraktif [/ip hotspot active print count-only];
+:local lby [/ip hotspot active get [find user="$name"] login-by];
+:local host [/ip dhcp-server lease get [find address="$ip"] host-name];
+:local time [/system clock get time];
+:if ([/ip hotspot user get [find name=$user] comment]="Connected") do={
+ /ip hotspot user set [find name=$user] comment="Login : $date";
+ /ip hotspot user set $user mac=$mac;
+ :log warning "User $user login by : $mac" ;
+} else= {
+ :log warning "User $user Connected successfully." ;
+}
+
+:if ([/system schedule find name=$user]="") do={
+  /tool fetch url="http://localhost:4000/api/tickets/setactive" keep-result=no;
+
+}
+
+ /system schedule add name=$user interval=12:00:00 on-event="/ip hotspot active remove [find user=$user]\r\n/ip hotspot user remove [find name=$user]\r\n/system schedule remove [find name=$user]" start-date=$date start-time=$time;
+
+
+ :local user $user;
+:local ip $address;
+:local mac $"mac-address";
+:local date [/system clock get date];
+:local useraktif [/ip hotspot active print count-only];
+:local lby [/ip hotspot active get [find user="$nama"] login-by];
+:local host [/ip dhcp-server lease get [find address="$ip"] host-name];
+:local time [/system clock get time];
+:if ([/ip hotspot user get [find name=$user] comment]="Connected") do={
+ /ip hotspot user set [find name=$user] comment="Login : $date";
+ /ip hotspot user set $user mac=$mac;
+ :log warning "User $user login by : $mac" ;
+} else= {
+ :log warning "User $user Connected successfully." ;
+}
+
+:if ([/system schedule find name=$user]="") do={
+ /system schedule add name=$user interval=12:00:00 on-event="/ip hotspot active remove [find user=$user]\r\n/ip hotspot user remove [find name=$user]\r\n/system schedule remove [find name=$user]" start-date=$date start-time=$time;
+}
+
+
+:put (",remc,200,2d,0,,Disable,"); 
+{:local date [ /system clock get date ];
+:local year [ :pick $date 7 11 ];
+:local month [ :pick $date 0 3 ];
+:local comment [ /ip hotspot user get [/ip hotspot user find where name="$user"] comment]; 
+:local ucode [:pic $comment 0 2]; :if ($ucode = "vc" or $ucode = "up" or $comment = "") 
+do={ /sys sch add name="$user" disable=no start-date=$date interval="2d"; 
+:delay 2s; 
+:local exp [ /sys sch get [ /sys sch find where name="$user" ] next-run]; 
+:local getxp [len $exp]; :if ($getxp = 15) do={ :local d [:pic $exp 0 6]; :local t [:pic $exp 7 16]; 
+:local s ("/"); :local exp ("$d$s$year $t"); /ip hotspot user set comment=$exp [find where name="$user"];}; 
+:if ($getxp = 8) do={ /ip hotspot user set comment="$date $exp" [find where name="$user"];}; 
+:if ($getxp > 15) do={ /ip hotspot user set comment=$exp [find where name="$user"];}; 
+/sys sch remove [find where name="$user"]; 
+:local mac $"mac-address"; 
+:local time [/system clock get time ]; /system script add name="$date-|-$time-|-$user-|-200-|-$address-|-$mac-|-2d-|-test-|-$comment" owner="$month$year" source=$date comment=adna}}
+
+/**
+To send data from Mikrotik
+*/
+:local user;
+:log warning "doing $user";
+/tool fetch url="http://192.168.1.53:4000/api/tickets/setactive/$user" keep-result=no mode=http;
+
+
+
+/*** Lock user script ***/
+
+:delay 2
+:local m [ip hotspot active get value-name=mac-address [find user=$username]]
+/ip hotspot user set mac-address=$m [find name=$username]

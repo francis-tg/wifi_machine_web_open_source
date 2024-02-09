@@ -1,0 +1,48 @@
+<div class="auth-wrapper">
+    <div class="auth-content">
+        <div class="auth-bg">
+            <span class="r"></span>
+            <span class="r s"></span>
+            <span class="r s"></span>
+            <span class="r"></span>
+        </div>
+        <div class="card">
+            <div class="card-body text-center">
+                <div class="mb-4">
+                    <i class="feather icon-unlock auth-icon"></i>
+                </div>
+                <h3 class="mb-4">Modifier les informations du router</h3>
+                <form action="" method="post">
+                    <div class="input-group mb-3">
+                        <input type="text" name="ip_address" class="form-control" required pattern="^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$" placeholder="Adresse Ip">
+                    </div>
+                    <div class="input-group mb-4">
+                        <input type="text" name="username" class="form-control" required  placeholder="Nom d'utilisateur">
+                    </div>
+                    <div class="input-group mb-4">
+                        <input type="password" name="password" class="form-control" placeholder="Mot de passe" required>
+                    </div>
+                    {{!-- <div class="form-group text-left">
+                        <div class="checkbox checkbox-fill d-inline">
+                            <input type="checkbox" name="checkbox-fill-1" id="checkbox-fill-a1" checked="">
+                            <label for="checkbox-fill-a1" class="cr"> Save Details</label>
+                        </div>
+                    </div> --}}
+                    <button type="submit" class="btn btn-primary shadow-2 mb-4">Modifier</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{!-- <style>
+    .auth-wrapper {
+        margin-top: -10rem;
+    }
+
+    nav,
+    .navbar {
+        display: none;
+        visibility: hidden;
+    }
+</style> --}}

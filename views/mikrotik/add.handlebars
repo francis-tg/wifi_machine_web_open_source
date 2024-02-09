@@ -1,0 +1,73 @@
+{{#each errors}}
+  <div class="error">
+    <div class="alert alert-danger text-center"> <i class="fas fa-exclamation-triangle    "></i> {{text}}</div>
+  </div>
+{{/each}}
+<div class="container">
+  <div class="col-md-6 card card-body">
+    <h3>Ajouter les infos générales du serveur</h3>
+    <form action="/mkroute/add" method="post">
+      <div class="form-group">
+        <label for="mikrotik_address">Addresse Mik</label>
+        <input
+          type="message"
+          class="form-control"
+          name="mikrotik_address"
+          value="{{mikrotik_address}}"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="mikrotik_username">Username mik</label>
+        <input
+          type="message"
+          class="form-control"
+          name="mikrotik_username"
+          value="{{mikrotik_username}}"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="mikrotik_password">mot de passe Mik</label>
+        <input
+          type="message"
+          class="form-control"
+          name="mikrotik_password"
+          value="{{mikrotik_password}}"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="ticket_header">Entête</label>
+        <input
+          type="message"
+          class="form-control"
+          name="ticket_header"
+          value="{{ticket_header}}"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="ticket_footer">Pied de page</label>
+        <input
+          type="message"
+          class="form-control"
+          name="ticket_footer"
+          value="{{ticket_footer}}"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="printer_address">Adresse de l'imprimante</label>
+        <input
+          type="message"
+          class="form-control"
+          name="printer_address"
+          value="{{printer_address}}"
+          required
+        />
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Ajouter</button>
+    </form>
+  </div>
+</div>

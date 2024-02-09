@@ -1,0 +1,64 @@
+{{#each errors}}
+  <div class="error">
+    <div class="alert alert-danger">{{text}}</div>
+  </div>
+{{/each}}
+<div class="container">
+  <div class="col-md-6 card card-body">
+    <h3>Ajouter les infos de la machine</h3>
+    <form action="/mroute/add" method="post">
+      <div class="form-group">
+        <label for="machineName">Nom de la machine</label>
+        <input
+          type="message"
+          class="form-control"
+          name="machineName"
+          value="{{machineName}}"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="screenMessage">Message d'accueil</label>
+        <input
+          type="message"
+          class="form-control"
+          name="screenMessage"
+          value="{{screenMessage}}"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="promoMessage">Message de promo</label>
+        <input
+          type="message"
+          class="form-control"
+          name="promoMessage"
+          value="{{promoMessage}}"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="machineId">ID de la machine</label>
+        <input
+          type="message"
+          class="form-control"
+          name="machineId"
+          value="{{machineId}}"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="version">Version de la machine</label>
+        <input
+          type="message"
+          class="form-control"
+          name="version"
+          value="{{version}}"
+          required
+        />
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block">Ajouter</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,122 @@
+<!-- [ breadcrumb ] start -->
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">Liste de tous les Utilisateurs connectés</h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="javascript:"><i class="fas fa-users    "></i>Utilisateurs connectés</a> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- [ breadcrumb ] end -->
+<div class="col-md-12">
+      <div class="card border-dark mb-3">
+        <div class="card-header text-center">
+          <b>Clients actuellement connectés <h1 class="badge badge-warning badge-lg" id="nbrActive">{{activeUsersCount}}</h1></b>
+   {{!--        </b><h2 class="badge badge-warning">{{activeUsers.length}}</h2> --}}
+        </div>
+        <div class="card-body">
+          <table id="devicetable" class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Utilisateur</th>
+                <th scope="col">Addresse Ip</th>
+                <th scope="col">Addresse Mac</th>
+                <th scope="col">Temps restant</th>
+                <th scope="col">Datas consommés</th>
+                <th>
+
+                </th>
+
+              </tr>
+            </thead>
+             <tbody id="data">
+             <!-- {{#each activeUsers}}
+            <tr>
+                <th scope="row"><span style="color: brown;">{{user}}</span></th>
+                <td>{{address}}</td>
+                <td>{{macAddress}}</td>
+                <td style="color: blue;">{{sessionTimeLeft}}
+
+                
+                </td>
+                <td>
+                <i id="up" class="feather icon-arrow-up text-c-green"></i> {{packetsIn}} Kb/s
+                <i id="down" class="feather icon-arrow-down text-c-red"></i> {{packetsOut}} Kb/s
+                </td>
+                <td>
+                  <a href="/devices/disconnect/{{id}}" class="btn btn-danger btn-sm"><i class="fas fa-sign-out-alt    "></i></a>
+                </td>
+            </tr>
+            {{/each}}-->
+            </tbody> 
+          </table>
+        </div>
+      </div></div>
+  </div>
+
+<script>
+  window.addEventListener('load',async()=>{
+    const socket = io();
+    socket.on("user connect",(active)=>{
+      const activeUsers = active.activeUsers
+      let table = ''
+      document.querySelector("#nbrActive").innerHTML = active.activeUsersCount
+      for(key in activeUsers){
+        const user = activeUsers[key];
+        //console.log(user)
+         table += `
+        <tr>
+                <th scope="row"><span style="color: brown;">${user.user}</span></th>
+                <td>${user.address}</td>
+                <td>${user.macAddress}</td>
+                <td style="color: blue;">${user.sessionTimeLeft||'Illimité'}
+                </td>
+                <td>
+                <i id="up" class="feather icon-arrow-up text-c-green"></i> ${Math.floor((user.packetsIn/1024)*1000)/100 >=1024 ? Math.floor(((user.packetsIn/1024)/1024)*1000)/100 +'M/s':Math.floor((user.packetsIn/1024)*100)/100 +'Kb/s'} 
+                <i id="down" class="feather icon-arrow-down text-c-red"></i> ${Math.floor((user.packetsOut/1024)*1000)/100 >=1024 ? Math.floor(((user.packetsOut/1024)/1024)*1000)/100 +'M/s':Math.floor((user.packetsOut/1024)*100)/100+'Kb/s'} 
+                </td>
+                <td>
+                  <a href="/devices/disconnect/${user.id}" class="btn btn-danger btn-sm"><i class="fas fa-sign-out-alt    "></i></a>
+                </td>
+            </tr>
+        `
+        
+      }
+      document.querySelector("#data").innerHTML = table
+
+    })
+
+  })
+
+  window.onload = ()=>{
+        const screenWidth = screen.width;
+        if(screenWidth<780){
+            document.querySelector('#devicetable').classList.add('table-responsive')
+        }else{
+          document.querySelector('#devicetable').classList.remove('table-responsive')
+        }
+    }
+    window.onchange = ()=>{
+         const screenWidth = screen.width;
+        if(screenWidth<780){
+            document.querySelector('#devicetable').classList.add('table-responsive')
+        }else{
+          document.querySelector('#devicetable').classList.remove('table-responsive')
+        }
+    }
+    window.addEventListener('resize',(e)=>{
+        const screenWidth = screen.width;
+        if(screenWidth<780){
+            document.querySelector('#devicetable').classList.add('table-responsive')
+        }else{
+          document.querySelector('#devicetable').classList.remove('table-responsive')
+        }
+    })
+</script>

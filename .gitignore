@@ -1,0 +1,14 @@
+database.sqlite3
+node_modules
+public/docs/*
+public/medias/*
+public/storage/*
+upload
+python.
+kiosk
+kiosk-app
+client
+*.mp4
+adna_modules
+*.db
+*.sqlite3

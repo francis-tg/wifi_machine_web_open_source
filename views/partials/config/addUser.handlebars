@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col-md-6">
+        <form action="" method="post" data-set="user" >
+            <div class="mb-3">
+                <label for="name" class="form-label">Nom complet</label>
+                <input type="text" class="form-control" name="name" id="name" aria-describedby="helpId" placeholder="">
+                <small id="helpId" class="form-text text-muted"></small>
+            </div>
+            <div class="mb-3">
+              <label for="username" class="form-label">Nom d'utilisateur</label>
+              <input type="text"
+                class="form-control" name="username" id="username" aria-describedby="helpId" placeholder="">
+              <small id="helpId" class="form-text text-muted"></small>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Mot de passe</label>
+                <input type="password" class="form-control" name="password" id="password" aria-describedby="helpId" placeholder="">
+                <small id="helpId" class="form-text text-muted"></small>
+            </div>
+            <div class="mb-3">
+                <label for="phoneNumber" class="form-label">Numero de téléphone</label>
+                <input type="phoneNumber" class="form-control" name="phoneNumber" id="phoneNumber" aria-describedby="helpId" placeholder="">
+                <small id="helpId" class="form-text text-muted"></small>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" name="email" id="email" aria-describedby="helpId" placeholder="">
+                <small id="helpId" class="form-text text-muted"></small>
+            </div>
+            <div class="mb-3">
+                <label for="localite" class="form-label">Lieu de residence</label>
+                <input type="localite" class="form-control" name="localite" id="localite" aria-describedby="helpId" placeholder="">
+                <small id="helpId" class="form-text text-muted"></small>
+            </div>
+            <div class="mb-3">
+                <label for="localMachine" class="form-label">Lieu de deploiement de la machine</label>
+                <input type="localMachine" class="form-control" name="localMachine" id="localMachine" aria-describedby="helpId" placeholder="">
+                <small id="helpId" class="form-text text-muted"></small>
+            </div>
+            <div class="mb-3">
+                <label for="tokenNgrok" class="form-label">Ngrok Token</label>
+                <input type="tokenNgrok" class="form-control" name="tokenNgrok" id="tokenNgrok" aria-describedby="helpId" placeholder="" required>
+                <small id="helpId" class="form-text text-muted"></small>
+            </div>
+            {{!-- <button class="btn btn-primary" type="submit">Enregistrer</button> --}}
+        </form>
+    </div>
+    <div class="col-md-6">
+        <ul style="font-size: medium;">
+            <li>Entrer votre nom complet</li>
+            <li>Entre votre nom d'utilisateur <span class="text-danger">Veuillez le retenir</span></li>
+            <li>Entre votre mode de passe </li>
+        </ul>
+    </div>
+</div>

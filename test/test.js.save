@@ -1,0 +1,28 @@
+const {
+  ThermalPrinter,
+  PrinterTypes,
+  CharacterSet,
+  BreakLine
+} = require("node-thermal-printer");
+
+(async () => {
+  let printer = new ThermalPrinter({
+    type: PrinterTypes.EPSON, // Printer type: 'star' or 'epson'
+    interface:"tcp:", // Printer interface
+    characterSet: CharacterSet.SLOVENIA, // Printer character set - default: SLOVENIA
+    removeSpecialCharacters: false, // Removes special characters - default: false
+    lineCharacter: "=", // Set character for lines - default: "-"
+    breakLine: BreakLine.WORD, // Break line after WORD or CHARACTERS. Disabled with NONE - default: WORD
+    options: {
+      // Additional options
+      timeout: 5000 // Connection timeout (ms) [applicable only for network printers] - default: 3000
+    }
+  });
+
+  let isConnected = await printer.isPrinterConnected(); // Check if printer is connected, return bool of status
+  let execute = await printer.execute(); // Executes all the commands. Returns success or throws error
+  if (isConnected) {
+    console.log("is connect");
+    printer.print("hello");
+  }
+})();

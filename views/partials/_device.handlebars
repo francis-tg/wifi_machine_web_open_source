@@ -1,0 +1,17 @@
+{{#each activeUsers}}
+<tr>
+    <th scope="row">{{user}}</th>
+    <td>{{address}}</td>
+    <td>{{macAddress}}</td>
+    <td style="color: blue;">{{sessionTimeLeft}}
+
+    
+    </td>
+    <td>
+    <i class="feather icon-arrow-up text-c-green"></i> {{packetsIn}} Kb/s
+    <i class="feather icon-arrow-down text-c-red"></i> {{packetsOut}} Kb/s
+    </td>
+</tr>
+{{/each}}
+
+device

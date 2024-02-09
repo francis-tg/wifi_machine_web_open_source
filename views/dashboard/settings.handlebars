@@ -1,0 +1,179 @@
+<!-- [ breadcrumb ] start -->
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">Paramètres</h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="javascript:"><i class="fas fa-cog   "></i>Paramètres</a> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- [ breadcrumb ] end -->
+<div class="container">
+    <div class="col-md-12">
+        <div class="card border-info border-left">
+      {{!-- <img class="card-img-top" src="holder.js/100px180/" alt=""> --}}
+      <div class="card-body">
+        <div class="row">
+            <div class="col-md-2">
+                <h4 class="card-title">{{machine_data.machineId}}</h4>
+        <p class="card-text">Version: <b class="text-success">{{machine_data.version}}</b></p>
+            </div>
+            <div class="col-md-3">
+                <h4><b>Mikrotik: </b></h4>
+                <h4 class="card-title"><i class="fas fa-server    "></i> Routeur:  {{health.boardName}}</h4>
+        <p class="card-text">Model: <b class="text-success">{{health.model}}</b></p>
+        <p class="card-text">Numero de série: <b class="text-black">{{health.serialNumber}}</b></p>
+        <p class="card-text">Version du systeme: <b class="text-black">{{health.currentFirmware}}</b></p>
+            </div>
+        <div class="col-md-4 " >
+            <p ><i class="fas fa-hard-drive"></i> Stockage: <b>{{storageUsage}}</b></p>
+            <p ><i class="fas fa-microchip"></i> Température: <b>{{systemCpuTime}}</b></p>
+            <p ><i class="fas fa-network-wired"></i>Adresse ip: <b>{{ethernetData.ip}}</b></p>
+        </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!--<div class="row">
+        <div class="col-md-3">
+            <div class="list-group" id="list-tab" role="tablist">
+                <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">
+                   <i class="fas fa-network-wired   gray-700 "></i> connexion Mikrotik
+                </a>
+                <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">
+                   <i class="fas fa-clock  gray-700  "></i> Temps de connexion
+                </a>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                    {{!-- Mikrotik setting --}}
+                    {{!-- {{>_mik_ip_setting}} --}}
+                {{!-- Setting end --}}
+
+                </div>
+                <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+                    {{!-- {{>_ticket_time}} --}}
+                </div>
+            </div>
+        </div>
+    </div>-->
+<div class="col-sm-12">
+<h5 class="mt-4">
+    Configurations
+</h5>
+<hr>
+<div class="row">
+<div class="col-md-3 col-sm-12">
+    <ul class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+    <li><a class="nav-link text-left active show" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">
+         connexion Mikrotik
+    </a></li>
+    <li><a class="nav-link text-left" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">
+         Temps de connexion
+    </a></li>
+    
+   {{!--  <li><a class="nav-link text-left" id="v-pills-auth-tab" data-toggle="pill" href="#v-pills-auth" role="tab"
+            aria-controls="v-pills-auth" aria-selected="false">
+            Autorisations
+        </a></li> --}}
+    </ul>
+</div>
+<div class="col-md-9 col-sm-12">
+<div class="tab-content" id="v-pills-tabContent">
+<div class="tab-pane fade active show" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+{{>_mik_ip_setting}}
+
+<h4 class="text-danger">Zone dangereuse</h4>
+<button class="btn btn-danger" onclick="reboot()">Redémarrer le système</button>
+<button class="btn btn-danger" onclick="reset()">Réinitialiser la machine</button>
+</div>
+<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+{{>_ticket_time}}
+</div>
+{{!-- <div class="tab-pane fade" id="v-pills-auth" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+    {{>_authorisation}}
+</div> --}}
+{{!-- <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+<p class="mb-0">Fugiat id quis dolor culpa eiusmod anim velit excepteur proident dolor aute qui magna. Ad proident laboris ullamco esse anim Lorem Lorem veniam quis Lorem irure occaecat velit nostrud magna nulla. Velit et et proident Lorem do ea tempor officia dolor. Reprehenderit Lorem aliquip labore est magna commodo est ea veniam consectetur.</p>
+</div>
+<div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+<p class="mb-0">Eu dolore ea ullamco dolore Lorem id cupidatat excepteur reprehenderit consectetur elit id dolor proident in cupidatat officia. Voluptate excepteur commodo labore nisi cillum duis aliqua do. Aliqua amet qui mollit consectetur nulla mollit velit aliqua veniam nisi id do Lorem deserunt amet. Culpa ullamco sit adipisicing labore officia magna elit nisi in aute tempor commodo eiusmod.
+</p>
+</div> --}}
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<script>
+    const mikUsername = document.querySelector('#username');
+    const mikpwd = document.querySelector('#password');
+    const mikaddress = document.querySelector('#address');
+    const mikbtn = document.querySelector('.mikbtn');
+
+    //mikbtn.setAttribute('disabled',true)
+    mikUsername.addEventListener('keyup',()=>{
+        console.log(mikUsername)
+        if(mikUsername.value !== document.querySelector('#username').value){
+            mikbtn.removeAttribute('disabled');
+        }
+    },false);
+    mikpwd.addEventListener('keyup',()=>{
+        if(mikpwd.value !== document.querySelector('#password').value){
+            mikbtn.removeAttribute('disabled');
+        }
+    });
+    mikaddress.addEventListener('keyup',()=>{
+        if(mikaddress.value !== document.querySelector('#address').value){
+            mikbtn.removeAttribute('disabled');
+        }
+    });
+
+    function reboot(){
+        fetch("/settings/reboot",{
+            method:"POST",
+            
+        }).then((r)=>{
+            if(r.status === 200){
+                setTimeout(()=>{
+                    location.reload()
+                },60000)
+            }
+        })
+    }
+    function reset() {
+            fetch("/settings/reset", {
+                method: "POST",
+
+            }).then((r) => {
+                if (r.status===200) {
+                    setTimeout(() => {
+                        location.href="/"
+                    }, 10000)
+                }
+            })
+        }
+
+
+</script>
+
+<style>
+    .col-md-4,.card{
+        border-radius: 10px;
+    }
+    .border-left{
+        border-left: 3px solid var(--success);
+    }
+</style>

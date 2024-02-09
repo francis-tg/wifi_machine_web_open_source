@@ -1,0 +1,298 @@
+<div class="float-right">
+    <button class="btn btn-success" data-target="#addTime" data-toggle="modal">
+        <i class="fas fa-plus    "></i> Ajouter
+    </button>
+</div>
+<div class="table-responsive">
+<table class="table table-hover ">
+    <thead class="thead-inverse">
+        <tr>
+            <th>Temps</th>
+            <th>Validité</th>
+            <th>Prix</th>
+            <th>#</th>
+        </tr>
+        </thead>
+        <tbody>
+           {{#each times}}
+                <tr>
+                <td id="cisco-format" scope="row">{{time}}</td>
+                <td id="cisco-format">{{validity}}</td>
+                <td id="cisco-format">{{price}} FCFA</td>
+                <td>
+                    <a href="/settings/time/delete/{{id}}" class="btn btn-danger"><i class="fas fa-times"></i></a>
+                    <button class="btn btn-warning" data-target="#times{{id}}" data-toggle="modal"><i class="fas fa-edit"></i></button>
+                </td>
+            </tr>
+
+
+<div class="modal fade" id="times{{id}}" tabindex="-1" role="dialog" aria-labelledby="times{{id}}-label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="times{{id}}Title">modifier un Temps</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--Modal content-->
+                <form action="/settings/edit/time/{{id}}" method="post">
+                    <div class="form-group">
+                      <label for="time">Time</label>
+                      <input type="text" class="form-control validate-mik-time" name="time" data-error="error{{id}}" id="time" aria-describedby="helpId" placeholder="Temps">
+                       <b class="text-danger" id="error{{id}}"></b>
+                      <small id="helpId" class="form-text text-muted">
+                          <h6>Formats Valides</h6>
+                          <ul>
+                              <li class="day">
+                                  <i class="fas fa-check-circle    "></i> (un chiffre)d <i class="fas fa-arrow-circle-right    "></i> (chiffre) jour
+                                  <br>
+                                  <span>exp: 1d => 1 jour</span>
+                              </li>
+                              <li class="hour">
+                                  <i class="fas fa-check-circle    "></i> (un chiffre)h <i class="fas fa-arrow-circle-right    "></i> (chiffre) heur
+                                  <br>
+                                  <span>exp: 1h => 1 heure</span>
+                              </li>
+                              <li class="min">
+                                  <i class="fas fa-check-circle    "></i> (un chiffre)m <i class="fas fa-arrow-circle-right    "></i> (chiffre) minute
+                                  <br>
+                                  <span>exp: 1m => 1 minute</span>
+                              </li>
+                              <li class="week">
+                                  <i class="fas fa-check-circle    "></i> (un chiffre)w <i class="fas fa-arrow-circle-right    "></i> (chiffre) semaine
+                                  <br>
+                                  <span>exp: 1w => 1 semaine</span>
+                              </li>
+                              
+                          </ul>
+                      </small>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="Validity">Validité</label>
+                      <input type="text"
+                          class="form-control validate-mik-time" name="validity" data-error="error{{id}}" id="validity" aria-describedby="helpId" placeholder="La validité" value="{{validity}}">
+                      <b class="text-danger" id="error{{id}}"></b>
+                      <small id="helpId" class="form-text text-muted">
+                          Modifier la validité du ticket
+                          <br>
+                          <ul>
+                              <li class="day">
+                                  <i class="fas fa-check-circle    "></i> (un chiffre)d <i class="fas fa-arrow-circle-right    "></i> (chiffre) jour
+                                  <br>
+                                  <span>exp: 1d => 1 jour</span>
+                              </li>
+                              <li class="hour">
+                                  <i class="fas fa-check-circle    "></i> (un chiffre)h <i class="fas fa-arrow-circle-right    "></i> (chiffre) heur
+                                  <br>
+                                  <span>exp: 1h => 1 heure</span>
+                              </li>
+                              <li class="min">
+                                  <i class="fas fa-check-circle    "></i> (un chiffre)m <i class="fas fa-arrow-circle-right    "></i> (chiffre) minute
+                                  <br>
+                                  <span>exp: 1m => 1 minute</span>
+                              </li>
+                              <li class="week">
+                                  <i class="fas fa-check-circle    "></i> (un chiffre)w <i class="fas fa-arrow-circle-right    "></i> (chiffre) semaine
+                                  <br>
+                                  <span>exp: 1w => 1 semaine</span>
+                              </li>
+                              
+                          </ul>
+                      </small>
+                    </div>
+                    <div class="form-group">
+                      <label for="price">Prix</label>
+                      <input type="number"
+                          class="form-control" min="10" step="10" name="price" id="price" aria-describedby="helpId" placeholder="Le prix" value="{{price}}">
+                      <small id="helpId" class="form-text text-muted">
+                          Modifier le prix du ticket
+                      </small>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                <button type="submit" class="btn btn-primary">Enregister</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+           {{/each}}
+            
+        </tbody>
+</table>
+
+</div>
+
+<div class="modal fade" id="addTime" tabindex="-1" role="dialog" aria-labelledby="addTime-label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addTimeTitle">Ajouter le temps</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--Modal content-->
+                <form action="/settings/time/add" method="post">
+                    <b class="text-danger" id="error{{id}}"></b>
+                    <div class="form-group">
+                      <label for="time">Temps</label>
+                      <input type="text"
+                          class="form-control form-control-sm validate-mik-time" name="time" id="time" data-error="error{{id}}" aria-describedby="helpId" placeholder="Le temps">
+                         
+                      <small id="helpId" class="form-text text-muted">
+                          Définir le temps d'utilisation
+                          <br>
+                          <ul>
+                              <li class="day">
+                                  <i class="fas fa-check-circle    "></i> (un chiffre)d <i class="fas fa-arrow-circle-right    "></i> (chiffre) jour
+                                  <br>
+                                  <span>exp: 1d => 1 jour</span>
+                              </li>
+                              <li class="hour">
+                                  <i class="fas fa-check-circle    "></i> (un chiffre)h <i class="fas fa-arrow-circle-right    "></i> (chiffre) heur
+                                  <br>
+                                  <span>exp: 1h => 1 heure</span>
+                              </li>
+                              <li class="min">
+                                  <i class="fas fa-check-circle    "></i> (un chiffre)m <i class="fas fa-arrow-circle-right    "></i> (chiffre) minute
+                                  <br>
+                                  <span>exp: 1m => 1 minute</span>
+                              </li>
+                              <li class="week">
+                                  <i class="fas fa-check-circle    "></i> (un chiffre)w <i class="fas fa-arrow-circle-right    "></i> (chiffre) semaine
+                                  <br>
+                                  <span>exp: 1w => 1 semaine</span>
+                              </li>
+                              
+                          </ul>
+                      </small>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="Validity">Validité</label>
+                      <input type="text"
+                          class="form-control form-control-sm validate-mik-time" name="validity" id="validity" data-error="error{{id}}" aria-describedby="helpId" placeholder="La validité" value="{{validity}}">
+                          
+                      <small id="helpId" class="form-text text-muted">
+                          Définir la validité du ticket
+                          <br>
+                          <ul>
+                              <li class="day">
+                                  <i class="fas fa-check-circle    "></i> (un chiffre)d <i class="fas fa-arrow-circle-right    "></i> (chiffre) jour
+                                  <br>
+                                  <span>exp: 1d => 1 jour</span>
+                              </li>
+                              <li class="hour">
+                                  <i class="fas fa-check-circle    "></i> (un chiffre)h <i class="fas fa-arrow-circle-right    "></i> (chiffre) heur
+                                  <br>
+                                  <span>exp: 1h => 1 heure</span>
+                              </li>
+                              <li class="min">
+                                  <i class="fas fa-check-circle    "></i> (un chiffre)m <i class="fas fa-arrow-circle-right    "></i> (chiffre) minute
+                                  <br>
+                                  <span>exp: 1m => 1 minute</span>
+                              </li>
+                              <li class="week">
+                                  <i class="fas fa-check-circle    "></i> (un chiffre)w <i class="fas fa-arrow-circle-right    "></i> (chiffre) semaine
+                                  <br>
+                                  <span>exp: 1w => 1 semaine</span>
+                              </li>
+                              
+                          </ul>
+                      </small>
+                    </div>
+                    <div class="form-group">
+                      <label for="price">Prix</label>
+                      <input type="number"
+                          class="form-control form-control-sm" min="10" step="10" name="price" id="price" aria-describedby="helpId" placeholder="Le prix" value="{{price}}">
+                      <small id="helpId" class="form-text text-muted">
+                          Définir le prix du ticket
+                      </small>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                <button type="submit" class="btn btn-primary">Ajouter</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+window.onload = ()=>{
+    const FieldsTime = document.querySelectorAll('.validate-mik-time');
+function addIntPlural(item, val) {
+    if (parseInt(item) > 1) {
+        return item + ' ' + val + 's'
+    } else return item + ' ' + val
+}
+
+if(FieldsTime.length>0){
+    const hour = /[0-9]{1,5}h/;
+    const min = /[0-9]{1,2}m/;
+    const day = /[0-9]{1,2}d/;
+    const week = /[0-9]{1,5}w/;
+    const digit = /[0-9]+/;
+    for(key in FieldsTime){
+        if (Object.hasOwnProperty.call(FieldsTime, key)) {
+        const fieldTime = FieldsTime[key];
+        
+        fieldTime.addEventListener('change',(e)=>{
+            e.preventDefault();
+            const value = fieldTime.value;
+            if(hour.test(value)){
+                document.getElementById(fieldTime.dataset.error).innerText='';
+                fieldTime.classList.remove('border-danger')
+                fieldTime.classList.add('border-success')
+                document.querySelector('.hour').classList.add('text-green')
+                document.getElementById(fieldTime.dataset.error).classList.replace('text-danger',"text-success")
+                return document.getElementById(fieldTime.dataset.error).innerText = addIntPlural(digit.exec(value), 'heure')
+            }
+            if(day.test(value)){
+                document.getElementById(fieldTime.dataset.error).innerText='';
+                fieldTime.classList.remove('border-danger');
+                fieldTime.classList.add('border-success');
+                 document.querySelector('.day').classList.add('text-green')
+                 document.getElementById(fieldTime.dataset.error).classList.replace('text-danger',"text-success")
+                return document.getElementById(fieldTime.dataset.error).innerText = addIntPlural(digit.exec(value), 'jour')
+            }
+            
+            if(week.test(value)){
+                document.getElementById(fieldTime.dataset.error).innerText='';
+                fieldTime.classList.remove('border-danger')
+                fieldTime.classList.add('border-success')
+                document.querySelector('.week').classList.add('text-green')
+                document.getElementById(fieldTime.dataset.error).classList.replace('text-danger',"text-success")
+                return document.getElementById(fieldTime.dataset.error).innerText = addIntPlural(digit.exec(value), 'semaine')
+            }
+            if(min.test(value)){
+                document.getElementById(fieldTime.dataset.error).innerText='';
+                fieldTime.classList.remove('border-danger')
+                fieldTime.classList.add('border-success')
+                document.querySelector('.min').classList.add('text-green')
+                document.getElementById(fieldTime.dataset.error).classList.replace('text-danger',"text-success")
+                return document.getElementById(fieldTime.dataset.error).innerText=addIntPlural(digit.exec(value), 'minute')
+            }
+            fieldTime.classList.remove('border-success')
+            fieldTime.classList.add('border-danger')
+             document.querySelector('.hour').classList.remove('text-green')
+             document.querySelector('.day').classList.remove('text-green')
+             document.querySelector('.min').classList.remove('text-green')
+             document.querySelector('.week').classList.remove('text-green')
+             document.getElementById(fieldTime.dataset.error).classList.replace("text-success",'text-danger')
+            return document.getElementById(fieldTime.dataset.error).innerText= "format n'est pas valide"
+        })
+         }
+    }
+}
+}
+
+</script>

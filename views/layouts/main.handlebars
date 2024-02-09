@@ -1,0 +1,94 @@
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="manifest" href="/manifest.json">
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/style.css">
+<!-- Favicon icon -->
+    <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
+    <!-- fontawesome icon -->
+    <link rel="stylesheet" href="/assets/fonts/fontawesome/css/all.min.css">
+    <!-- animation css -->
+    <link rel="stylesheet" href="/assets/plugins/animation/css/animate.min.css">
+    <!-- vendor css -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+    <link rel="stylesheet" href="/css/all.min.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/datatable-html5.css" />
+    <link rel="stylesheet" type="text/css" href="/css/jquery.mCustomScrollbar.min.css"/>
+    <link rel="stylesheet" href="/lightbox/css/lightbox.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="apple-touch-icon" href="/icons/apple-icon-180.png">
+    <link rel="stylesheet" href="/assets/noty/lib/noty.css">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+  <title>ADNA</title>
+  <script src="/socket.io/socket.io.js"></script>
+</head>
+
+
+
+
+<body>
+  
+{{!-- <div class="container"> --}}
+  <!-- [ Pre-loader ] start -->
+  <div class="loader-bg">
+    <div class="loader-track">
+      <div class="loader-fill"></div>
+    </div>
+  </div>
+  {{#if user}}
+  {{> _navbar}}
+  <!-- [ Main Content ] start -->
+  <div class="pcoded-main-container">
+    <div class="pcoded-wrapper">
+      <div class="pcoded-content">
+        <div class="pcoded-inner-content">
+          <!-- [ breadcrumb ] end -->
+          <div class="main-body">
+            <div class="page-wrapper">
+              {{!-- {{>_msg}}
+              {{>_errors}} --}}
+              {{{body}}}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  {{else}}
+  {{!-- {{>_errors}} --}}
+  {{{body}}}
+  {{/if}}
+
+
+<script src="/js/jquery.slim.js"></script>
+  <script src="/assets/js/vendor-all.min.js"></script>
+  <script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/assets/js/pcoded.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.dataTables.min.js"></script>
+  <script src="/js/colvis.min.js"></script>
+  <script src="/js/lib/noty.min.js"></script>
+  <script src="/js/custom.js">
+  <script src="/js/ip_validate.js"></script>
+  
+
+  </script>
+
+  </body>
+
+  </html>
+<style>
+  .list1 li:hover{
+    cursor: pointer;
+  }
+</style>

@@ -1,0 +1,71 @@
+<!-- [ breadcrumb ] start -->
+<div class="page-header">
+  <div class="page-block">
+    <div class="row align-items-center">
+      <div class="col-md-12">
+        <div class="page-header-title">
+          <h5 class="m-b-10">Paramètres</h5>
+        </div>
+        <ul class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/"><i
+                class="feather icon-home"
+              ></i></a></li>
+          <li class="breadcrumb-item"><a href="/settings"><i
+                class="fas fa-cog"
+              ></i>Paramètres</a>
+          </li>
+          <li class="breadcrumb-item"><a href="javascript:"><i
+                class="fas fa-edit"
+              ></i>
+              Editer</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- [ breadcrumb ] end -->
+{{!-- {{#each errors}}
+  <div class="alert alert-danger">{{text}}</div>
+{{else}}
+
+{{/each}} --}}
+
+<div class="card card-body">
+  <h3>Modifier le texte de l'écran de la machine</h3>
+  <form action="/mroute/edit" method="post">
+    <div class="form-group">
+      <label for="machineName">Nom de la machine</label>
+      <input
+        type="message"
+        class="form-control"
+        name="machineName"
+        value="{{machine.machineName}}"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="screenMessage">
+
+      </label>
+      <input
+        type="message"
+        class="form-control"
+        name="screenMessage"
+        value="{{machine.screenMessage}}"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="machineId">ID de la machine</label>
+      <input
+        type="message"
+        class="form-control"
+        name="machineId"
+        value="{{machine.machineId}}"
+        required
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Modifier</button>
+  </form>
+</div>

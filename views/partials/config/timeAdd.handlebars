@@ -1,0 +1,129 @@
+<div class="row">
+    <div class="col-md-6">
+        <form action="" method="post" data-set="ticket" multi-input>
+            <div class="mb-3 input-group">
+                <div>
+                    <input type="text" class="form-control" name="time" id="time" aria-describedby="helpId" placeholder="Entrer le temps">
+                    
+                </div>
+                <div>
+                    <input type="text" class="form-control" name="validity" id="validity" aria-describedby="helpId" placeholder="Entrer la validité">
+                </div>
+                    <div>
+                        <input type="number" class="form-control" name="price" id="price" aria-describedby="helpId" placeholder="Entrer le prix">
+                    </div>
+                <button type="button" add-btn class="btn btn-success"><i class="fas fa-plus"></i></button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <ul style="font-size: medium;">
+            <li>Le premier champs est reservé pour le temps<span class="text-danger">!Important</span></li>
+            <li>Le premier champs est reservé pour la validité <span class="text-danger">!Important</span></li>
+            <li>Le premier champs est reservé pour le prix <span class="text-danger">!Important</span></li>
+            {{!-- <li>Entre votre mode de passe </li> --}}
+        </ul>
+
+        <h5>COMMENT DEFINIR LE TEMPS</h5>
+        <ul>
+            <li class="day">
+                <i class="fas fa-check-circle    "></i> (un chiffre)d <i class="fas fa-arrow-circle-right    "></i> (chiffre)
+                jour
+                <br>
+                <span>exp: 1d => 1 jour</span>
+            </li>
+            <li class="hour">
+                <i class="fas fa-check-circle    "></i> (un chiffre)h <i class="fas fa-arrow-circle-right    "></i> (chiffre)
+                heur
+                <br>
+                <span>exp: 1h => 1 heure</span>
+            </li>
+            <li class="min">
+                <i class="fas fa-check-circle    "></i> (un chiffre)m <i class="fas fa-arrow-circle-right    "></i> (chiffre)
+                minute
+                <br>
+                <span>exp: 1m => 1 minute</span>
+            </li>
+            <li class="week">
+                <i class="fas fa-check-circle    "></i> (un chiffre)w <i class="fas fa-arrow-circle-right    "></i> (chiffre)
+                semaine
+                <br>
+                <span>exp: 1w => 1 semaine</span>
+            </li>
+        
+        </ul>
+    </div>
+</div>
+
+<script>
+    let count = 0
+    const multiInput = document.querySelector("[multi-input]");
+    window.MultiInput = [multiInput.children[0]]
+    multiInput.children[0].querySelector("button[add-btn]").addEventListener("click",(e)=>{
+        const getForm = multiInput.children[0].cloneNode(true);
+        getForm.querySelectorAll("input").forEach((i)=>i.value="")
+        count++
+        //remove add btn
+        getForm.querySelector("button[add-btn]").remove()
+        //add remove btn
+        const removeBtn = document.createElement("button");
+        removeBtn.setAttribute("class","btn btn-danger");
+        removeBtn.setAttribute("type","button");
+        const rmIcon = document.createElement("i");
+        rmIcon.setAttribute("class","fas fa-minus");
+        removeBtn.append(rmIcon);
+        removeBtn.setAttribute("remove-btn",count)
+        getForm.appendChild(removeBtn);
+        multiInput.append(getForm)
+       window.MultiInput = multiInput.children
+        multiInput.querySelectorAll("[remove-btn]").forEach((rmBtn) => {
+            rmBtn.addEventListener("click", (e) => {
+                e.preventDefault()
+                window.MultiInput =  multiInput.children
+                rmBtn.parentElement.remove()
+            })
+        })
+        
+    })
+
+        window.MultiInput.map((input) => {
+            input.addEventListener("change", (e) => {
+                if(e.target.value!==""){
+                    const result = parseTime(e.target);
+                    const span = document.createElement("span");
+                    span.setAttribute("class", "text-success");
+                    if(typeof result !=="undefined"){
+                        span.innerHTML = result;
+                        return e.target.append(span);
+                    }
+                }
+                
+            })
+        })
+    
+
+    function parseTime(validity){
+        let result ="";
+        const content = validity.value;
+        const hour = /[0-9]{1,5}h/;
+        const min = /[0-9]{1,2}m/;
+        const day = /[0-9]{1,2}d/;
+        const week = /[0-9]{1,5}w/;
+        const digit = /[0-9]+/;
+
+        if (hour.test(content)) {
+             return result =
+                 addIntPlural(digit.exec(content)[0], "heure");
+        } else if (min.test(content)) {
+            return result =
+                 addIntPlural(digit.exec(content)[0], "minute");
+        } else if (day.test(content)) {
+            return result =
+               addIntPlural(digit.exec(content)[0], "jour");
+        } else if (week.test(content)) {
+            return result =
+                addIntPlural(digit.exec(content)[0], "semaine");
+        }
+        return ;
+    }
+</script>

@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Tickets</title>
+        <link rel="stylesheet" href="/print.ticket.css">
+        {{!-- <link rel="stylesheet" href="style.css"> --}}
+    </head>
+    <body >
+        <div class="container-fluid">
+          <div class="row">
+            {{#each tickets}}
+                <div class="ticket">
+                <div class="header">
+                    <h4>{{header}}</h4>
+                </div>
+                <hr>
+                <div class="body">
+                    <p>Nom d'utilisateur: {{username}}</p>
+                    <p>Mot de passe: {{password}}</p>
+                    <p>Temps: {{limitUptime}}</p>
+                    {{#if validity}}
+                        <p id="ciscoValidity">validité: {{validity}}</p>
+                        {{else}}
+                        <p>validité: indéfinie</p>
+                    {{/if}}
+                </div>
+                <hr>
+                <div class="bottom">
+                    <h6>{{footer}}</h6>
+                </div>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+    </body>
+</html>
+<script src="/js/print.js"></script>
+<script>
+    window.onload = ()=>{
+        //this.print()
+
+        window.addEventListener('keydown',(e)=>{
+            if(e.ctrlKey && (e.key == "p" || e.charCode == 16 || e.charCode == 112 || e.keyCode == 80) ){
+            alert("Sorry, you are not authorized to take a Print");
+            e.cancelBubble = true;
+            e.preventDefault();
+            e.stopImmediatePropagation();
+        }
+        })
+    }
+</script>

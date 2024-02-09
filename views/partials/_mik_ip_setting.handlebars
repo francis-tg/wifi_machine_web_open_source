@@ -1,0 +1,135 @@
+
+    <div class="row">
+
+    <div class="col-md-5 shadow py-5 m-3">
+        <div class="text-center">
+            <h3>
+                <i class="fas fa-network-wired    "></i> Informations Mikrotik
+            </h3>
+        </div>
+        <form action="edit/mikinfo" method="post">
+            <div class="form-group">
+              <label for="address">Adresse du Mikrotik</label>
+              <input type="text" class="form-control" name="address" id="address" aria-describedby="helpId" placeholder="Adresse du mikrotik (XXX.XXX.XXX.XXX)" value="{{mikrotik_data.mikrotik_address}}">
+              <small id="helpId" class="form-text text-muted">
+                  Adresse du mikrotik <br>
+                  <i class="fas fa-arrow-circle-right    "></i> exemple: 192.168.5.5
+              </small>
+            </div>
+            <div class="form-group">
+              <label for="username">Nom d'utilisateur</label>
+              <input type="text" class="form-control" name="username" id="username" aria-describedby="helpId" placeholder="Nom d'utilisateur" value="{{mikrotik_data.mikrotik_username}}">
+              <small id="helpId" class="form-text text-muted">
+                  Nom d'utilisateur <br>
+                  <i class="fas fa-arrow-circle-right    "></i> exemple: adna
+              </small>
+            </div>
+            <div class="form-group">
+              <label for="password">Mot de passe</label>
+              <input type="password" class="form-control" name="password" id="password" aria-describedby="helpId" placeholder="Mot de passe" value="{{mikrotik_data.mikrotik_password}}">
+              <small id="helpId" class="form-text text-muted">
+                  Mot de passe <br>
+                  <i class="fas fa-arrow-circle-right    "></i> exemple: ******
+              </small>
+            </div>
+            <button class="btn btn-primary w-100 mikbtn" type="submit" >Enregister</button>
+        </form>
+    </div>
+
+{{!-- Ticket informations --}}
+
+<div class="col-md-5 shadow py-5 m-3">
+    <div class="text-center">
+        <h3>
+            <i class="fas fa-ticket-alt    "></i> Informations ticket
+        </h3>
+    </div>
+    <form action="edit/ticket/info" method="post">
+        <div class="form-group">
+          <label for="header">Entête du ticket</label>
+          <input type="text" class="form-control" name="header" id="header" value="{{mikrotik_data.ticket_header}}" aria-describedby="helpId" placeholder="Entête de ticket">
+          <small id="helpId" class="form-text text-muted">
+               Entête du ticket <br>
+                  <i class="fas fa-arrow-circle-right    "></i> exemple: ADNA SERVICE
+          </small>
+        </div>
+        <div class="form-group">
+          <label for="footer">Pied du ticket</label>
+          <input type="text" class="form-control" name="footer" id="footer" aria-describedby="helpId" value="{{mikrotik_data.ticket_footer}}" placeholder="Pied de page du ticket">
+          <small id="helpId" class="form-text text-muted">
+              
+               Entête du ticket <br>
+                  <i class="fas fa-arrow-circle-right    "></i> exemple: Merci pour votre confiance
+          </small>
+        </div>
+        <button class="btn btn-primary w-100" type="submit" >Enregister</button>
+    </form>
+</div>
+
+<div class="col-md-5 shadow py-5 m-3">
+    <div class="text-center">
+        <h3>
+            <i class="fas fa-print    "></i> Information imprimante
+        </h3>
+    </div>
+    <form action="edit/print" method="post">
+        <div class="form-group">
+          <label for="print">
+              Address de l'imprimante
+          </label>
+          <input type="text" class="form-control" name="print" id="print" value="{{mikrotik_data.printer_address}}" aria-describedby="helpId" placeholder="Adresse de l'imprimante" value="" required pattern="\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}">
+          <small id="helpId" class="form-text text-muted">
+               Adresse de l'imprimante <br>
+                  <i class="fas fa-arrow-circle-right    "></i> exemple: 192.168.5.5
+          </small>
+        </div>
+        <button class="btn btn-primary w-100" type="submit" >Enregister</button>
+    </form>
+</div>
+
+<div class="col-md-5 shadow py-5 m-3">
+    <div class="text-center">
+        <h3>
+            <i class="fas fa-ethernet   "></i> Interface Ethernet 
+        </h3>
+    </div>
+    <form action="ether/edit" method="post">
+        <div class="form-group">
+            <label for="ip_address">
+                Address Ip
+            </label>
+            <input type="text" class="form-control" name="ip" id="ip_address" value="{{ethernetData.ip}}" required pattern="\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}" 
+                aria-describedby="helpId" placeholder="Adresse de l'imprimante">
+            <small id="helpId" class="form-text text-muted">
+                Adresse ip du port ethernet <br>
+                <i class="fas fa-arrow-circle-right    "></i> exemple: 192.168.55.5/24
+            </small>
+        </div>
+        <div class="form-group">
+            <label for="netmask">
+                Masque sous réseau
+            </label>
+            <input type="text" class="form-control" name="netmask" id="netmask" value="{{ethernetData.netmask}}" pattern="/^((255\.){3}(255|254|252|248|240|224|192|128|0+)\.0+)|(0+\.){3}0+$/g" readonly required
+                aria-describedby="helpId" placeholder="Adresse de l'imprimante">
+            <small id="helpId" class="form-text text-muted">
+                Masque sous réseau du réseau <br>
+                <i class="fas fa-arrow-circle-right    "></i> exemple: 255.255.0.0
+            </small>
+        </div>
+        <div class="form-group">
+            <label for="gateway">
+                Masque sous réseau
+            </label>
+            <input type="text" class="form-control" name="gateway" id="gateway" value="{{ethernetData.gateway}}" pattern="\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}" required
+                aria-describedby="helpId" placeholder="Adresse de l'imprimante">
+            <small id="helpId" class="form-text text-muted">
+                Passrelle par défaut <br>
+                <i class="fas fa-arrow-circle-right    "></i> exemple: 192.168.55.1
+            </small>
+        </div>
+        <button class="btn btn-primary w-100" type="submit">Enregister</button>
+    </form>
+</div>
+
+</div>
+<script src="/js/ip_validate.js"></script>

@@ -1,0 +1,67 @@
+{
+    "name": "ADNA CONTROLLER",
+    "short_name": "ADNA APP",
+    "start_url": "/",
+    "icons": [{
+            "src": "/icons/manifest-icon-192.maskable.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/icons/manifest-icon-192.maskable.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "/icons/manifest-icon-512.maskable.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/icons/manifest-icon-512.maskable.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ],
+    "shortcuts": [{
+        "name": "ADNA CONTROLLER",
+        "short_name": "ADNA APP",
+        "start_url": "/",
+        "url": "/",
+        "description": "Application for ADNA CONTROLLER",
+        "icons": [{
+                "src": "/icons/manifest-icon-192.maskable.png",
+                "sizes": "192x192",
+                "type": "image/png",
+                "purpose": "any"
+            },
+            {
+                "src": "/icons/manifest-icon-192.maskable.png",
+                "sizes": "192x192",
+                "type": "image/png",
+                "purpose": "maskable"
+            },
+            {
+                "src": "/icons/manifest-icon-512.maskable.png",
+                "sizes": "512x512",
+                "type": "image/png",
+                "purpose": "any"
+            },
+            {
+                "src": "/icons/manifest-icon-512.maskable.png",
+                "sizes": "512x512",
+                "type": "image/png",
+                "purpose": "maskable"
+            }
+        ]
+
+    }],
+    "theme_color": "#1de9b6",
+    "background_color": "#FFFFFF",
+    "display": "fullscreen",
+    "orientation": "portrait"
+}
