@@ -1,7 +1,10 @@
 const moment = require("moment");
+const { Sequelize } = require("../models");
 const db = require("../models");
+
 const getTotalAndLogs = async (model, whereClause = {}) => {
-	const logTicket = await db.Achat_ticket_logs.findAll({
+	try {
+		const logTicket = await db.Achat_ticket_logs.findAll({
 		raw: true,
 		attributes: [[Sequelize.fn("sum", Sequelize.col("price")), "total"]],
 		where: whereClause,
@@ -14,6 +17,9 @@ const getTotalAndLogs = async (model, whereClause = {}) => {
 			where: whereClause,
 		}),
 	};
+	} catch (error) {
+		
+	}
 };
 
 const isWithinDateRange = (itemDate, startDate, endDate) => {

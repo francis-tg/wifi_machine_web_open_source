@@ -4,10 +4,10 @@
 service_name="machine"
 
 # Chemin absolu du script Python
-script_path="/root/machine_wifi/machine.py 11 7"
+script_path="/root/wifi_machine/machine.py 11 7"
 
 # Chemin absolu du répertoire contenant le script Python
-working_directory="/root/machine_wifi/"
+working_directory="/root/wifi_machine/"
 
 # Nom de l'utilisateur qui exécutera le service (optionnel)
 user="root"
@@ -18,7 +18,7 @@ group="root"
 # Créer un fichier de service
 cat <<EOF | sudo tee "/etc/systemd/system/${service_name}.service" > /dev/null
 [Unit]
-Description=Description de votre service
+Description=Machienà wifi
 
 [Service]
 ExecStart=${script_path}
