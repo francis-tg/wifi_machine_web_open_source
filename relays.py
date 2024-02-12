@@ -1,5 +1,5 @@
 import OPi.GPIO as GPIO
-RELAYS = []
+RELAYS = [11,13,15,19,21,23]
 
 class Relay:
     def __init__(self) -> None:
