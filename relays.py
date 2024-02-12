@@ -2,7 +2,7 @@ import OPi.GPIO as GPIO
 RELAYS = [11,13,15,19,21,23]
 
 class Relay:
-    def __init__(self) -> None:
+    def __init__(self):
         self.relays = RELAYS
         self.relay_active = GPIO.LOW
         self.relay_disable = GPIO.HIGH
