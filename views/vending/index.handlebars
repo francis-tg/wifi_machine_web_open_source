@@ -1,0 +1,175 @@
+<button class="btn btn-primary" data-toggle="modal" data-target="#addArticle">
+  Ajouter un article
+</button>
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">
+          Article
+        </th>
+        <th scope="col">
+          prix
+        </th>
+        <th scope="col">
+          Boutton
+        </th>
+        <th scope="col">
+          Temps de rotation
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each articles}}
+         <tr class="">
+          <td scope="row">
+            {{article}}
+          </td>
+          <td>
+            {{price}} F
+          </td>
+          <td>
+            {{button}}
+          </td>
+          <td>
+            {{turntime}} ms
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+
+<div
+  class="modal fade"
+  id="addArticle"
+  data-backdrop="static"
+  data-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="addArticle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addArticleLabel">
+          Ajouter un article
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">
+            &times;
+          </span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/vending/add" method="post">
+          <div class="mb-3">
+            <label for="article" class="form-label">
+              Nom de l'article
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              name="article"
+              id="article"
+              aria-describedby="helpId"
+              placeholder=""
+            />
+            <small id="helpId" class="form-text text-muted">
+            </small>
+          </div>
+          <div class="mb-3">
+            <label for="price" class="form-label">
+              prix
+            </label>
+            <input
+              type="price"
+              class="form-control"
+              name="price"
+              id="price"
+              aria-describedby="helpId"
+              placeholder=""
+              value="0"
+            />
+            <small id="helpId" class="form-text text-muted">
+            </small>
+          </div>
+          <div class="form-group mb-3">
+            <label for="button" class="form-label">
+              Button
+            </label>
+            <select name="button" class="form-control" id="button">
+              <option value="">
+                Selectionner
+              </option>
+              <option value="1">
+                1
+              </option>
+              <option value="2">
+                2
+              </option>
+              <option value="3">
+                3
+              </option>
+              <option value="4">
+                4
+              </option>
+              <option value="5">
+                5
+              </option>
+              <option value="6">
+                6
+              </option>
+            </select>
+            <small id="helpId" class="form-text text-muted">
+            </small>
+          </div>
+          <div class="form-group mb-3">
+            <label for="turntime" class="form-label">
+              Temps de rotation
+            </label>
+            <input
+              type="turntime"
+              class="form-control"
+              name="turntime"
+              id="turntime"
+              aria-describedby="helpId"
+              placeholder=""
+            />
+            <small id="helpId" class="form-text text-muted">
+            </small>
+          </div>
+          <button class="btn btn-primary w-100" type="submit">Enregistrer</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  IMask(
+  document.getElementById('turntime'),
+  {
+    mask: '0000 ms',
+    lazy: false,
+  }
+)
+IMask(
+  document.getElementById('price'),
+  {
+    mask: 'num F',
+    lazy: false,
+    min:0,
+    blocks: {
+    num: {
+      mask: Number,
+      expose: true,
+    },
+    }
+  }
+)
+</script>

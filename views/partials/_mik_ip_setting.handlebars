@@ -132,4 +132,33 @@
 </div>
 
 </div>
+<script>
+   // Créer un masque pour valider une adresse IP
+        var ipMask = IMask(document.getElementById('ip_address'), {
+            mask: '0ZZ.0ZZ.0ZZ.0ZZ{/99}',
+            blocks: {
+                'ZZ': {
+                    mask: IMask.MaskedRange,
+                    from: 0,
+                    to: 255,
+                    maxLength: 3,
+                    placeholderChar: '0'
+                }
+            }
+        });
+
+        // Créer un masque pour valider une passerelle
+        var gatewayMask = IMask(document.getElementById('gateway'), {
+            mask: '0ZZ.0ZZ.0ZZ.0ZZ',
+            blocks: {
+                'ZZ': {
+                    mask: IMask.MaskedRange,
+                    from: 0,
+                    to: 255,
+                    maxLength: 3,
+                    placeholderChar: '0'
+                }
+            }
+        });
+</script>
 <script src="/js/ip_validate.js"></script>

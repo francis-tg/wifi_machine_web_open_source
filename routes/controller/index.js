@@ -34,4 +34,7 @@ module.exports.Controller = (app) => {
   app.use("/statistics", statistics);
   const config = require("../config");
   app.use("/config", config);
+
+  const vending = require("../vending");
+  app.use("/vending", vending);
 };
