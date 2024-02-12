@@ -1,7 +1,11 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import subprocess
 from time import sleep
-import sys,requests,json,socket
+import sys,json,socket
 import OPi.GPIO as GPIO
+
+count = 0
 def send_post_request(url, json_data):
     try:
         headers = {'Content-type': 'application/json'}
