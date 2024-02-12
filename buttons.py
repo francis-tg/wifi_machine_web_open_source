@@ -1,6 +1,6 @@
 import OPi.GPIO as GPIO
 from relays import Relay
-import functools,time
+import functools,time,db
 BUTTONS = [10,8]
 
 class Button(Relay):
@@ -17,7 +17,7 @@ class Button(Relay):
             GPIO.add_event_detect(int(btn), GPIO.BOTH, callback=callback_with_var, bouncetime=200)
             
     def detectBtnEvent(self, btn,channel):
-        print(btn)
+        article = db.getOne("Vendings")
         btn_index = self.buttons.index(btn)
         relay = self.relays[btn_index]
         self.activeRelay(relay)
