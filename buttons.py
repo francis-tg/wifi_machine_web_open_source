@@ -20,6 +20,7 @@ class Button(Relay):
             
     def detectBtnEvent(self, btn,channel):
         article = db.getOne("Vendings")
+        print(article)
         btn_index = self.buttons.index(btn)
         relay = self.relays[btn_index]
         self.activeRelay(relay)
