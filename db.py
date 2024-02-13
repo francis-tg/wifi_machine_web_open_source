@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import sqlite3
-conn = sqlite3.connect("./database.sqlite3")
 
 def getOne(tablename, columns=[],condition=None):
+    conn = sqlite3.connect("./database.sqlite3")
      # Création d'un curseur pour exécuter des requêtes SQL
     cur = conn.cursor()
 
