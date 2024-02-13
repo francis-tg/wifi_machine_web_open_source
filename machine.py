@@ -20,6 +20,7 @@ buttons.Button()
 try:
     print ("Press CTRL+C to exit")
     print(getCredit())
+    sleep(1)
     while True:
        pass
        """  # Vérifier si le compteur a changé
