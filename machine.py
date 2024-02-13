@@ -19,10 +19,10 @@ GPIO.add_event_detect(int(sys.argv[1]), GPIO.BOTH, callback=detectBtnPush,bounce
 buttons.Button()
 try:
     print ("Press CTRL+C to exit")
-    print(getCredit())
-    sleep(1)
+    
     while True:
-       pass
+       print(getCredit())
+       sleep(1)
        """  # Vérifier si le compteur a changé
         if GPIO.input(int(sys.argv[2])):
             count +=10
