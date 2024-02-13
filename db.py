@@ -28,3 +28,5 @@ def getOne(tablename, columns=["*"],condition=None):
     conn.close()
 
     return row
+
+#getOne("vendings",["*"],"price=100")
