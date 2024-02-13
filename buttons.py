@@ -23,9 +23,9 @@ class Button(Relay):
         article = db.getOne("vendings",["*"],"price={}".format(utils.getCredit()))
         if article !=None:
             #btn_index = self.buttons.index(btn)
-            relay = self.relays[article["button"]-1]
+            relay = self.relays[article[3]-1]
             self.activeRelay(relay)
-            time.sleep(article["turntime"])
+            time.sleep(article[4])
             self.disableRelay(relay)
             utils.count = 0
             return
