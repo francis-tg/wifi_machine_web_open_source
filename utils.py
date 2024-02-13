@@ -43,4 +43,5 @@ def detectBtnPush(channel):
     sleep(1)
 
 def getCredit():
+    global count
     return count

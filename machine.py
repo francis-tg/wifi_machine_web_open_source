@@ -4,7 +4,7 @@ import subprocess
 import OPi.GPIO as GPIO
 from time import sleep,time       # this lets us have a time delay
 import sys
-from utils import detectBtnPush, detecter_piece
+from utils import detectBtnPush, detecter_piece,getCredit
 import buttons
 count = 0
 WAIT_TIME = 5  # en secondes, ajustez selon vos besoins
@@ -19,6 +19,7 @@ GPIO.add_event_detect(int(sys.argv[1]), GPIO.BOTH, callback=detectBtnPush,bounce
 buttons.Button()
 try:
     print ("Press CTRL+C to exit")
+    print(getCredit())
     while True:
        pass
        """  # Vérifier si le compteur a changé
