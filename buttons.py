@@ -27,4 +27,5 @@ class Button(Relay):
             self.activeRelay(relay)
             time.sleep(article["turntime"])
             self.disableRelay(relay)
+            utils.count = 0
             return
