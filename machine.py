@@ -21,8 +21,9 @@ try:
     print ("Press CTRL+C to exit")
     
     while True:
-       print(getCredit())
-       sleep(1)
+       """ print(getCredit())
+       sleep(1) """
+       pass
        """  # Vérifier si le compteur a changé
         if GPIO.input(int(sys.argv[2])):
             count +=10
