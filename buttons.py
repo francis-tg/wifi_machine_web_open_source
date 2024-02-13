@@ -25,7 +25,7 @@ class Button(Relay):
             #btn_index = self.buttons.index(btn)
             relay = self.relays[article[3]-1]
             self.activeRelay(relay)
-            time.sleep(article[4])
+            time.sleep(article[4]/1000)
             self.disableRelay(relay)
             utils.count = 0
             return
