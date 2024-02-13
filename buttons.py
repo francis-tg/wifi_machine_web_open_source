@@ -20,8 +20,8 @@ class Button(Relay):
             GPIO.add_event_detect(int(btn), GPIO.BOTH, callback=callback_with_var, bouncetime=200)
             
     def detectBtnEvent(self, btn,channel):
-        article = db.getOne("vendings",["*"],"price={}".format(self.credit))
-        print(self.credit)
+        article = db.getOne("vendings",["*"],"price={}".format(utils.getCredit()))
+        print(utils.getCredit())
         btn_index = self.buttons.index(btn)
         relay = self.relays[btn_index]
         self.activeRelay(relay)
