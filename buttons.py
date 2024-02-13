@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import OPi.GPIO as GPIO
 from relays import Relay
 import functools,time,db

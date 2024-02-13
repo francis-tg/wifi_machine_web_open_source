@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import OPi.GPIO as GPIO
 RELAYS = [11,13,15,19,21,23]
 
