@@ -41,3 +41,6 @@ def detectBtnPush(channel):
     #send_post_request(url="http://"+get_local_ip()+":4000/api/tickets/buy", json_data={"price":count})
     count = 0
     sleep(1)
+
+def getCredit():
+    return count
