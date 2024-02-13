@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import sqlite3,threading
-
+import sqlite3
 conn = sqlite3.connect("./database.sqlite3")
 
 def getOne(tablename, columns=[],condition=None):
@@ -29,8 +28,3 @@ def getOne(tablename, columns=[],condition=None):
     conn.close()
 
     return row
-thread = threading.Thread(target=getOne)
-thread.start()
-
-# Wait for the thread to complete
-thread.join()
