@@ -4,7 +4,7 @@
 service_name="machine"
 
 # Chemin absolu du script Python
-script_path="/root/wifi_machine/machine.py 11 7"
+script_path="/root/wifi_machine/boot.sh"
 
 # Chemin absolu du répertoire contenant le script Python
 working_directory="/root/wifi_machine/"
