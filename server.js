@@ -118,7 +118,7 @@ server.listen(port, () => {
 		ConfigMikrotik();
 		//setPublicUrl();
 	}, 5000);
- require("./launchMachine.js")
+	//require("./launchMachine.js")
 	console.log(`server running on port: ${port}`);
 });
 const getActive = async () => {
